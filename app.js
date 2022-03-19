@@ -19,8 +19,4 @@ app.use(passport.session());
 
 app.use(authRouter);
 
-app.get('/', (req, res) => {
-  res.status(201).send({"Hi": "There"})
-});
-
 module.exports = app;
