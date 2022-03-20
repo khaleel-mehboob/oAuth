@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
-const App = () => {
-  return (
-    <div>
-      <header>
-        <h2>Hi there!</h2>
-        <div>
-          <a href='/auth/google'>
-            Sign in with Google
-          </a>
-          &nbsp;
-          <a href='/auth/facebook'>
-            Sign in with Facebook
-          </a>
-        </div>
-      </header>
-    </div>
-  );
+import Landing from './Landing';
+
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchUser();
+  }
+
+  render () {
+    return (
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Landing />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default connect(null, actions)(App);

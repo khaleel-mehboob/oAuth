@@ -55,7 +55,7 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
 router.get('/auth/facebook/callback', passport.authenticate('facebook'));
 router.get('/api/v1/auth/logout', (req, res) => {
   req.logout();
-  res.send(req.user);
+  res.redirect('/');
 });
 router.get('/api/v1/auth/current_user', (req, res) => {
   res.send(req.user);
